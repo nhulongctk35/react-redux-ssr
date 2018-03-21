@@ -2,6 +2,8 @@
   "dependencies": {
     "es6-promise": "^4.2.4",
     "isomorphic-unfetch": "^2.0.0",
+    "koa": "^2.5.0",
+    "koa-static": "^4.0.2",
     "lodash": "^4.17.5",
     "next": "^5.0.0",
     "next-redux-saga": "^2.0.1",
@@ -20,8 +22,7 @@
   "devDependencies": {},
   "scripts": {
     "dev": "node src/server.js",
-    "build": "next build",
-    "start": "next start"
+    "build": "next build"
   },
   "author": "Long Tran",
   "license": "ISC",

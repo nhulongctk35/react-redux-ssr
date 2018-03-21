@@ -72,17 +72,17 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "/home/longntran/Projects/react-redux-ssr/node_modules/next/dist/pages/_document.js":
+/***/ "/home/framgia/Projects/react-redux-ssr/node_modules/next/dist/pages/_document.js":
 /***/ (function(module, exports) {
 
-module.exports = require("/home/longntran/Projects/react-redux-ssr/node_modules/next/dist/pages/_document.js");
+module.exports = require("/home/framgia/Projects/react-redux-ssr/node_modules/next/dist/pages/_document.js");
 
 /***/ }),
 
 /***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("/home/longntran/Projects/react-redux-ssr/node_modules/next/dist/pages/_document.js");
+module.exports = __webpack_require__("/home/framgia/Projects/react-redux-ssr/node_modules/next/dist/pages/_document.js");
 
 
 /***/ })

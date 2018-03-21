@@ -1,9 +1,12 @@
-/* global fetch */
 import {all, put, takeLatest} from 'redux-saga/effects'
-import es6promise from 'es6-promise'
 import 'isomorphic-unfetch'
 
-es6promise.polyfill()
+function loadDataSuccess(data) {
+  return {
+    type: 'LOAD_DATA_SUCCESS',
+    payload: data,
+  };
+}
 
 function * loadDataSaga () {
   try {
@@ -21,4 +24,4 @@ function * rootSaga () {
   ])
 }
 
-export default [rootSaga]
+export default [rootSaga];

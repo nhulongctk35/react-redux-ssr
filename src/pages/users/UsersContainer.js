@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import es6promise from 'es6-promise'
+import 'isomorphic-unfetch'
+
+es6promise.polyfill();
 
 import Users from './Users';
 
 class UsersContainer extends  Component {
-  static async getInitialProps({store}) {
-    store.dispatch({
+
+  componentWillMount() {
+    this.props.dispatch({
       type: 'LOAD_DATA'
-    })
+    });
   }
 
   render() {
@@ -18,12 +23,9 @@ class UsersContainer extends  Component {
 }
 
 const mapStateToProps = (state) => {
-  return state.users;
-};
-
-const mapDispatchToProps = (dispatch) => {
   return {
+    users: state.users.users,
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps())(UsersContainer);
+export default connect(mapStateToProps)(UsersContainer);

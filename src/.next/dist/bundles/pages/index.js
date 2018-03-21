@@ -136,8 +136,8 @@ function injectSagas(store, sagas) {
   if (!sagas) {
     return;
   }
-  var newEffects = sagas.filter(function (injectedSaga) {
-    return !store.injectedSagas[injectedSaga.name];
+  var newEffects = sagas.filter(function (saga) {
+    return !store.injectedSagas[saga.name];
   });
   newEffects.forEach(function (saga) {
     var sagaTask = store.runSaga(saga);
@@ -165,7 +165,7 @@ function injectSagas(store, sagas) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _jsxFileName = '/home/longntran/Projects/react-redux-ssr/src/components/Injector/injector.js';
+var _jsxFileName = '/home/framgia/Projects/react-redux-ssr/src/components/Injector/injector.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -278,7 +278,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _jsxFileName = '/home/longntran/Projects/react-redux-ssr/src/pages/users/Users.js';
+var _jsxFileName = '/home/framgia/Projects/react-redux-ssr/src/pages/users/Users.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -302,18 +302,18 @@ var Users = function (_Component) {
   _createClass(Users, [{
     key: 'render',
     value: function render() {
-      var data = this.props.data;
-
+      var _props$data = this.props.data,
+          data = _props$data === undefined ? [] : _props$data;
 
       var usersView = data.map(function (user) {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'li',
           { key: user.id, __source: {
               fileName: _jsxFileName,
-              lineNumber: 8
+              lineNumber: 7
             }
           },
-          user.name
+          JSON.stringify(user)
         );
       });
 
@@ -322,7 +322,7 @@ var Users = function (_Component) {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 12
+            lineNumber: 11
           }
         },
         usersView
@@ -341,19 +341,18 @@ var Users = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__("babel-runtime/regenerator");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__("react-redux");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_redux__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Users__ = __webpack_require__("./pages/users/Users.js");
-
-var _jsxFileName = '/home/longntran/Projects/react-redux-ssr/src/pages/users/UsersContainer.js';
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__("react-redux");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_redux__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_es6_promise__ = __webpack_require__("es6-promise");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_es6_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_es6_promise__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch__ = __webpack_require__("isomorphic-unfetch");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Users__ = __webpack_require__("./pages/users/Users.js");
+var _jsxFileName = '/home/framgia/Projects/react-redux-ssr/src/pages/users/UsersContainer.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -363,6 +362,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
+
+
+__WEBPACK_IMPORTED_MODULE_2_es6_promise___default.a.polyfill();
 
 
 
@@ -376,58 +379,36 @@ var UsersContainer = function (_Component) {
   }
 
   _createClass(UsersContainer, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.props.dispatch({
+        type: 'LOAD_DATA'
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       var users = this.props.users;
 
 
-      return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Users__["a" /* default */], { data: users, __source: {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Users__["a" /* default */], { data: users, __source: {
           fileName: _jsxFileName,
-          lineNumber: 16
+          lineNumber: 21
         }
       });
     }
-  }], [{
-    key: 'getInitialProps',
-    value: function () {
-      var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(_ref) {
-        var store = _ref.store;
-        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                store.dispatch({
-                  type: 'LOAD_DATA'
-                });
-
-              case 1:
-              case 'end':
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function getInitialProps(_x) {
-        return _ref2.apply(this, arguments);
-      }
-
-      return getInitialProps;
-    }()
   }]);
 
   return UsersContainer;
-}(__WEBPACK_IMPORTED_MODULE_1_react__["Component"]);
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 var mapStateToProps = function mapStateToProps(state) {
-  return state.users;
+  return {
+    users: state.users.users
+  };
 };
 
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {};
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["connect"])(mapStateToProps, mapDispatchToProps())(UsersContainer));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(mapStateToProps)(UsersContainer));
 
 /***/ }),
 
@@ -444,10 +425,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0__components_Injector__["c" /* injector */])({
-  sagas: __WEBPACK_IMPORTED_MODULE_1__sagas__["a" /* default */],
-  reducers: __WEBPACK_IMPORTED_MODULE_2__reducers__["a" /* default */]
-}, __WEBPACK_IMPORTED_MODULE_3__UsersContainer__["a" /* default */]));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0__components_Injector__["c" /* injector */])({ reducers: __WEBPACK_IMPORTED_MODULE_2__reducers__["a" /* default */], sagas: __WEBPACK_IMPORTED_MODULE_1__sagas__["a" /* default */] }, __WEBPACK_IMPORTED_MODULE_3__UsersContainer__["a" /* default */]));
 
 /***/ }),
 
@@ -455,17 +433,28 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export exampleInitialState */
+var initState = {
+  users: []
+};
 
-var exampleInitialState = {};
+function userReducers() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initState;
+  var _ref = arguments[1];
+  var type = _ref.type,
+      payload = _ref.payload;
 
-function reducers() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : exampleInitialState;
-  var action = arguments[1];
-
-  return state;
+  switch (type) {
+    case 'LOAD_DATA_SUCCESS':
+      {
+        return Object.assign({}, state, { users: payload });
+      }
+    default:
+      return state;
+  }
 }
 
+var reducers = {};
+reducers['users'] = userReducers;
 /* harmony default export */ __webpack_exports__["a"] = (reducers);
 
 /***/ }),
@@ -478,21 +467,22 @@ function reducers() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_saga_effects__ = __webpack_require__("redux-saga/effects");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_saga_effects___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_redux_saga_effects__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_es6_promise__ = __webpack_require__("es6-promise");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_es6_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_es6_promise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch__ = __webpack_require__("isomorphic-unfetch");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_isomorphic_unfetch__ = __webpack_require__("isomorphic-unfetch");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_isomorphic_unfetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_isomorphic_unfetch__);
 
 
 var _marked = /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(loadDataSaga),
     _marked2 = /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(rootSaga);
 
-/* global fetch */
 
 
 
-
-__WEBPACK_IMPORTED_MODULE_2_es6_promise___default.a.polyfill();
+function loadDataSuccess(data) {
+  return {
+    type: 'LOAD_DATA_SUCCESS',
+    payload: data
+  };
+}
 
 function loadDataSaga() {
   var res, data;
@@ -554,18 +544,7 @@ function rootSaga() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return exampleInitialState; });
-
-var exampleInitialState = {};
-
-function reducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : exampleInitialState;
-    var action = arguments[1];
-
-    return state;
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (reducer);
+/* harmony default export */ __webpack_exports__["a"] = ({});
 
 /***/ }),
 
@@ -585,18 +564,30 @@ function reducer() {
 /* harmony export (immutable) */ __webpack_exports__["a"] = withReduxSaga;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__("babel-runtime/regenerator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux__ = __webpack_require__("redux");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_redux__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_redux_wrapper__ = __webpack_require__("next-redux-wrapper");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_redux_wrapper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_next_redux_wrapper__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_next_redux_saga__ = __webpack_require__("next-redux-saga");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_next_redux_saga___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_next_redux_saga__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux__ = __webpack_require__("redux");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_redux__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_next_redux_wrapper__ = __webpack_require__("next-redux-wrapper");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_next_redux_wrapper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_next_redux_wrapper__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_redux_saga__ = __webpack_require__("redux-saga");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_redux_saga___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_redux_saga__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__reducer__ = __webpack_require__("./reducer.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__saga__ = __webpack_require__("./saga.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Injector__ = __webpack_require__("./components/Injector/index.js");
 
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _jsxFileName = '/home/framgia/Projects/react-redux-ssr/src/store.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
@@ -620,17 +611,20 @@ var bindMiddleware = function bindMiddleware(middleware) {
     var _require = __webpack_require__("redux-devtools-extension"),
         composeWithDevTools = _require.composeWithDevTools;
 
-    return composeWithDevTools(__WEBPACK_IMPORTED_MODULE_1_redux__["applyMiddleware"].apply(undefined, _toConsumableArray(middleware)));
+    return composeWithDevTools(__WEBPACK_IMPORTED_MODULE_2_redux__["applyMiddleware"].apply(undefined, _toConsumableArray(middleware)));
   }
-  return __WEBPACK_IMPORTED_MODULE_1_redux__["applyMiddleware"].apply(undefined, _toConsumableArray(middleware));
+  return __WEBPACK_IMPORTED_MODULE_2_redux__["applyMiddleware"].apply(undefined, _toConsumableArray(middleware));
 };
 
 function configureStore() {
   var _this = this;
 
-  var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : __WEBPACK_IMPORTED_MODULE_5__reducer__["b" /* exampleInitialState */];
+  var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-  var store = Object(__WEBPACK_IMPORTED_MODULE_1_redux__["createStore"])(__WEBPACK_IMPORTED_MODULE_5__reducer__["a" /* default */], initialState, bindMiddleware([sagaMiddleware]));
+  var store = Object(__WEBPACK_IMPORTED_MODULE_2_redux__["createStore"])(function () {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    return state;
+  }, initialState, bindMiddleware([sagaMiddleware]));
 
   store.runSaga = function (saga) {
     return sagaMiddleware.run(saga);
@@ -638,7 +632,7 @@ function configureStore() {
   store.injectedReducers = {};
   store.injectedSagas = {};
 
-  store.sagasTaskDone = function () {
+  store.sagaTasksDone = function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(isServer) {
       var _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, saga;
 
@@ -713,7 +707,7 @@ function configureStore() {
       }, _callee, _this, [[4, 15, 19, 27], [20,, 22, 26]]);
     }));
 
-    return function (_x2) {
+    return function (_x3) {
       return _ref.apply(this, arguments);
     };
   }();
@@ -723,8 +717,85 @@ function configureStore() {
   return store;
 }
 
+function withReduxSagaWrapper(BaseComponent) {
+  var WrappedComponent = function (_React$Component) {
+    _inherits(WrappedComponent, _React$Component);
+
+    function WrappedComponent() {
+      _classCallCheck(this, WrappedComponent);
+
+      return _possibleConstructorReturn(this, (WrappedComponent.__proto__ || Object.getPrototypeOf(WrappedComponent)).apply(this, arguments));
+    }
+
+    _createClass(WrappedComponent, [{
+      key: 'render',
+      value: function render() {
+        return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(BaseComponent, _extends({}, this.props, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 66
+          }
+        }));
+      }
+    }], [{
+      key: 'getInitialProps',
+      value: function () {
+        var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2(ctx) {
+          var isServer, store, props;
+          return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  isServer = ctx.isServer, store = ctx.store;
+                  props = void 0;
+
+                  if (!BaseComponent.getInitialProps) {
+                    _context2.next = 6;
+                    break;
+                  }
+
+                  _context2.next = 5;
+                  return BaseComponent.getInitialProps(ctx);
+
+                case 5:
+                  props = _context2.sent;
+
+                case 6:
+                  if (!isServer) {
+                    _context2.next = 9;
+                    break;
+                  }
+
+                  _context2.next = 9;
+                  return store.sagaTasksDone(isServer);
+
+                case 9:
+                  return _context2.abrupt('return', props);
+
+                case 10:
+                case 'end':
+                  return _context2.stop();
+              }
+            }
+          }, _callee2, this);
+        }));
+
+        function getInitialProps(_x4) {
+          return _ref2.apply(this, arguments);
+        }
+
+        return getInitialProps;
+      }()
+    }]);
+
+    return WrappedComponent;
+  }(__WEBPACK_IMPORTED_MODULE_1_react___default.a.Component);
+
+  return WrappedComponent;
+}
+
 function withReduxSaga(BaseComponent) {
-  return __WEBPACK_IMPORTED_MODULE_2_next_redux_wrapper___default()(configureStore)(__WEBPACK_IMPORTED_MODULE_3_next_redux_saga___default()(BaseComponent));
+  return __WEBPACK_IMPORTED_MODULE_3_next_redux_wrapper___default()(configureStore)(withReduxSagaWrapper(BaseComponent));
 }
 
 /***/ }),
@@ -762,13 +833,6 @@ module.exports = require("isomorphic-unfetch");
 /***/ (function(module, exports) {
 
 module.exports = require("lodash");
-
-/***/ }),
-
-/***/ "next-redux-saga":
-/***/ (function(module, exports) {
-
-module.exports = require("next-redux-saga");
 
 /***/ }),
 
