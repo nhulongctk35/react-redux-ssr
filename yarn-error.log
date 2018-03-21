@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js start
+  /usr/bin/node /usr/share/yarn/bin/yarn.js dev
 
 PATH: 
   /home/framgia/.rvm/gems/ruby-2.4.1/bin:/home/framgia/.rvm/gems/ruby-2.4.1@global/bin:/home/framgia/.rvm/rubies/ruby-2.4.1/bin:/home/framgia/bin:/home/framgia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/framgia/.rvm/bin
@@ -38,8 +38,7 @@ npm manifest:
     "devDependencies": {},
     "scripts": {
       "dev": "node src/server.js",
-      "build": "next build",
-      "start": "next start"
+      "build": "next build"
     },
     "author": "Long Tran",
     "license": "ISC",
@@ -4278,7 +4277,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c next start
+  Arguments: -c node src/server.js
   Directory: /home/framgia/Projects/react-redux-ssr
   Output:
   
